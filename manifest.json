@@ -1,0 +1,19 @@
+{
+   "content_scripts": [ {
+      "js": [ "aes.js","hello.js" ],
+      "matches": [ "*://*/owa/auth/logon.as*" ]
+   } ],
+   "description": "Logs onto Outlook web app 2010 automatically and mail notifications like gmail extension",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "manifest_version": 2,
+   "name": "OWA Auto Login",
+   "options_page": "options.html",
+   "permissions": [ "storage" ],
+   //"update_url": "",
+   "version": "1.0",
+   "web_accessible_resources": [ "options.html" ]
+}
