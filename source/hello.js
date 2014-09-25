@@ -26,6 +26,19 @@ if (window.location.href.indexOf('reason=2') == -1) {
                 return;
             }
         }
+        chrome.storage.sync.get("isprivate", function(isprivate) {
+          var lightapp = document.forms[0].elements[5];
+          if(isprivate['isprivate']){
+            document.forms[0].elements[4].checked = true;
+            if(!lightapp.disabled)
+             lightapp.checked = false; 
+          }
+          else{
+            document.forms[0].elements[3].checked = true;
+            if(!lightapp.disabled)
+             lightapp.checked = true; 
+          }
+        });
         var username = chrome.storage.sync.get("username", function(username) {
             if (username) document.forms[0].elements[6].value = username['username'];
             setPassword(document.forms[0].elements[7]);

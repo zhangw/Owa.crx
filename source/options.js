@@ -16,6 +16,11 @@ function save_options(e) {
             "password": sjcl.encrypt(PASS, password)
         });
     }
+    select = document.getElementById("isprivate");
+    var isprivate = select.checked;
+    chrome.storage.sync.set({
+        "isprivate":isprivate
+    });
     select = document.getElementById("site");
     var site = select.value;
     chrome.storage.sync.set({
@@ -38,6 +43,9 @@ function restore_options() {
     });
     chrome.storage.sync.get("site", function(site) {
         if (site['site']) document.getElementById("site").value = site['site'];
+    });
+    chrome.storage.sync.get("isprivate", function(isprivate) {
+        document.getElementById("isprivate").checked = isprivate['isprivate'];
     });
     chrome.storage.sync.get("password", function(password1) {
         var password = sjcl.decrypt(PASS, password1['password']);
